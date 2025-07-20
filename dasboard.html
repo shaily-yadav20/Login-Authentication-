@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Dashboard</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="navbar">
+    <h3>My Dashboard</h3>
+  </div>
+
+  <!-- Main white dashboard box -->
+  <div class="dashboard-box">
+    <h2 id="welcomeUser">Welcome, User!</h2>
+    <div class="cards">
+      <div class="card">
+        <h3>My Courses</h3>
+        <p>3 ongoing courses</p>
+      </div>
+      <div class="card">
+        <h3>Messages</h3>
+        <p>2 unread messages</p>
+      </div>
+      <div class="card">
+        <h3>Progress</h3>
+        <p>65% completed</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Logout button moved to bottom right -->
+  <div class="logout-area">
+    <button onclick="logout()">Logout</button>
+  </div>
+
+  <script>
+    const user = localStorage.getItem("loggedInUser");
+
+    if (!user) {
+      window.location.href = "index.html";
+    } else {
+      document.getElementById("welcomeUser").innerText = "Welcome, " + user.toUpperCase() + "!";
+    }
+
+    function logout() {
+      localStorage.removeItem("loggedInUser");
+      window.location.href = "index.html";
+    }
+  </script>
+</body>
+</html>
